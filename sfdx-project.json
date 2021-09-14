@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "UpdateCustomMetadataSettings",
+  "namespace": "",
+  "sfdcLoginUrl": "https://resilient-koala-8d06wu-dev-ed.my.salesforce.com",
+  "sourceApiVersion": "52.0"
+}
