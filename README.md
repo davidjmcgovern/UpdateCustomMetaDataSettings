@@ -1,18 +1,17 @@
-# Salesforce DX Project: Next Steps
+# Update your Salesforce Custom Metadata Settings
+A simple class to update the Custom Metadata Settings in your org. Pass in the full name and label of your custom metadata type along with a map of fields and values you wish to update. Class currently handles string data types. Will be adding support for additional datatypes.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+# Sample Use Case
+Assume an org has a Custom Metadata Type of 'CalloutSetting' and a CalloutSetting record of 'StravaAccess'. There are 3 custom fields of string data type - Access Token, Refresh Token, and Access Token Expires At.
 
-## How Do You Plan to Deploy Your Changes?
+String setttingFullName = 'CalloutSetting.StravaAccess';
+String settingLabel = 'StravaAccess';
+Map<String, String> mapFields = new Map<String, String>();
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+mapFields.put('Access_Token__c', 'abc12345');
+mapFields.put('Refresh_Token__c', 'def67890');
+mapFields.put('Access_Token_Expires_At__c','1234567890');
 
-## Configure Your Salesforce DX Project
+String response = UpdateCustomMetaData.updateCustomMetaDataSettings(setttingFullName, settingLabel, mapFields);
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+system.debug('Response ' + response);
